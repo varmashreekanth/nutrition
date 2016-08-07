@@ -5,5 +5,5 @@ import org.json.JSONObject;
 
 public interface NutritionService{
 
-	public JSONObject getNutritionDetails(String nameOfTheFood);
+	public String getNutritionDetails(String nameOfTheFood);
 }
