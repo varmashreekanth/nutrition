@@ -1,8 +1,9 @@
 package com.fitness.nutrition.dao;
 
-import org.json.JSONObject;
+import java.util.List;
+import com.fitness.nutrition.bean.Nutrition;
 
 public interface NutritionDao{
 	
-	public String getNutritionDetails(String nameOfTheFood);
+	public List<Nutrition> getNutritionDetails(String nameOfTheFood);
 }

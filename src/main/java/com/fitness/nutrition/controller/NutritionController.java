@@ -1,9 +1,11 @@
 package com.fitness.nutrition.controller;
 
+import java.util.List;
+import com.fitness.nutrition.bean.Nutrition;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bean.annotation.RequestMapping;
-import org.springframework.web.bean.annotation.ResponseBody;
+
 
 @Controller
 public class NutritionController{
@@ -20,10 +22,12 @@ public class NutritionController{
 	}
 
 	@RequestMapping("fitness/nutrition-details.do")
-	public @ResponseBody String getNutrients(Model map,HttpServletRequest request,HttpServletResponse response){
+	public String getNutrients(Model map,HttpServletRequest request,HttpServletResponse response){
 
 		String nameOfTheFood = (String)request.getParameter("foodItem");
-		return nutritionService.getNutritionDetails(nameOfTheFood);
+		List<Nutrition> nutritionDetailsList = nutritionService.getNutritionDetails(nameOfTheFood);
+		map.put("nutritionDetailsList",nutritionDetailsList);
+		return "nutritrientsDetail";
 	}
 	
 }
