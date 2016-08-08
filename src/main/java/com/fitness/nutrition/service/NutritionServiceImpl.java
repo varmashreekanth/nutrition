@@ -1,6 +1,7 @@
 pakcage com.fitness.nutrition.service;
 
-import org.json.JSONObject;
+import java.util.List;
+import com.fitness.nutrition.bean.Nutrition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -19,7 +20,7 @@ public class NutritionServiceImpl implements NutritionService{
 	}
 	
 	@Override
-	public String getNutritionDetails(String nameOfTheFood){
+	public List<Nutrition> getNutritionDetails(String nameOfTheFood){
 		return nutritionDao.getNutritionDetails(nameOfTheFood);
 	}
 }

@@ -3,7 +3,7 @@ package com.fitness.nutrition.bean;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("nutritionCollection")
+@Document(collection="nutritionCollection")
 public class Nutrition{
 
 	@Id
