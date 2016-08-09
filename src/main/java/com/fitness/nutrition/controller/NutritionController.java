@@ -1,6 +1,8 @@
 package com.fitness.nutrition.controller;
 
 import java.util.List;
+import java.util.Map;
+import org.apache.log4j.Logger;
 import com.fitness.nutrition.bean.Nutrition;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.web.bean.annotation.RequestMapping;
 
 @Controller
 public class NutritionController{
+
+	private Static final Logger LOGGER = Logger.getLogger(NutritionController.class);
 
 	@Autowired
 	private NutritionService nutritionService;
@@ -22,11 +26,15 @@ public class NutritionController{
 	}
 
 	@RequestMapping("fitness/nutrition-details.do")
-	public String getNutrients(Model map,HttpServletRequest request,HttpServletResponse response){
+	public String getNutrients(Map model,HttpServletRequest request,HttpServletResponse response){
+
+		LOGGER.info("Entry :: getNutrients() method");
 
 		String nameOfTheFood = (String)request.getParameter("foodItem");
 		List<Nutrition> nutritionDetailsList = nutritionService.getNutritionDetails(nameOfTheFood);
-		map.put("nutritionDetailsList",nutritionDetailsList);
+		model.put("nutritionDetailsList",nutritionDetailsList);
+
+		LOGGER.info("Exit :: getNutrients() method");
 		return "nutritrientsDetail";
 	}
 	
